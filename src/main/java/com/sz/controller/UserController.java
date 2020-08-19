@@ -1,8 +1,11 @@
 package com.sz.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.sz.entity.Users;
 import com.sz.service.IUserService;
 import com.sz.service.impl.UserServiceImpl;
+import com.sz.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -56,5 +59,29 @@ public class UserController {
         return userService.save(users);
     }
 
+
+
+    //分页
+    @RequestMapping("/pageUsers/{id}/{row}")
+    public List<Users> pageUsers(@PathVariable(name = "id") int id,@PathVariable(name = "row") int row){
+        PageHelper.startPage(id, row);
+        List<Users> users = userService.pageUsers();
+        Page<Users> pages=(Page<Users>)users;
+        PageUtil<Users> pageUtil= new PageUtil
+                (pages.getTotal(),
+                pages.getResult(),
+                pages.getPageSize(),
+                pages.getPages(),
+                pages.getPageNum());
+        return pages.getResult();
+    }
+
+
+    //排序
+    @GetMapping("/orderByUsers")
+    public List<Users> orderByUsers(){
+        List<Users> users = userService.orderByUsers();
+        return users;
+    }
 
 }

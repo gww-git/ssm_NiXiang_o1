@@ -69,4 +69,19 @@ public class UserServiceImpl implements IUserService {
         return usersMapper.insertSelective(users);  //相反,带有Selective
 
     }
+
+
+    @Override
+    public List<Users> pageUsers() {
+        return usersMapper.selectByExample(null);
+    }
+
+
+    @Override
+    public List<Users> orderByUsers() {
+        UsersExample usersExample=new UsersExample();
+        usersExample.setOrderByClause("id desc"); //根据id 倒序
+        System.out.println("是否去重："+usersExample.isDistinct());//默认不去重
+        return usersMapper.selectByExample(usersExample);
+    }
 }

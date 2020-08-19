@@ -1,6 +1,7 @@
 package com;
 
 import com.sz.entity.Users;
+import com.sz.mapper.UsersMapper;
 import com.sz.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +20,7 @@ public class test {
 
     @Test
     public void test1(){
-        List<Users> users = userService.ByUsers();
+        List<Users> users = userService.orderByUsers();
         System.out.println(users);
     }
 }

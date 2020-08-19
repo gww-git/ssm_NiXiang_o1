@@ -34,7 +34,24 @@
         <!--配置实体类映射文件-->
         <property name="mapperLocations" value="classpath*:com/sz/mapper/*.xml"></property>
 
+        <!--别名-->
         <property name="typeAliasesPackage" value="com.sz.entity"></property>
+
+
+        <!--配置分页插件-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <value>
+                            dialect=mysql
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+
+
     </bean>
 
     <!--10.配置接口包扫描路径； --> <!--就无需给mqpper注解了-->

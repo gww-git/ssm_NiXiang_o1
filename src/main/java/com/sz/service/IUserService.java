@@ -26,6 +26,10 @@ public interface IUserService {
 
     public int save(Users users);
 
+    public List<Users> pageUsers();
+
+    public List<Users> orderByUsers();
+
 
 
 }
