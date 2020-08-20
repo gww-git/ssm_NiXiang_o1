@@ -64,12 +64,4 @@ public class Users {
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
     }
-
-    @Override
-    public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
